@@ -1,8 +1,5 @@
 package es.ulpgc.eite.cleancode.advclickcounter.app;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import java.util.Objects;
 
 import es.ulpgc.eite.cleancode.advclickcounter.data.CounterData;
@@ -17,12 +14,9 @@ public class CounterToClickState {
   }
 
   @Override
-  public boolean equals(@Nullable Object obj) {
-    if(this == obj){
-      return true;
-    } if(obj == null || getClass() != obj.getClass()){
-      return false;
-    }
+  public boolean equals(Object obj) {
+    if(this == obj) return true;
+    if(obj == null || getClass() != obj.getClass()) return false;
     CounterToClickState state = (CounterToClickState) obj;
     return Objects.equals(counterData, state.counterData);
   }
@@ -32,9 +26,8 @@ public class CounterToClickState {
     return Objects.hashCode(counterData);
   }
 
-  @NonNull
   @Override
   public String toString() {
-    return super.toString();
+    return "counterData" + counterData;
   }
 }

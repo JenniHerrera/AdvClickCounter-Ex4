@@ -37,8 +37,10 @@ public class ClickListPresenter implements ClickListContract.Presenter {
       // update the model if is necessary
       //model.onDataFromPreviousScreen(savedState.data);
       state.datasource = savedState.counterData.clicks;
+      state.counterData = savedState.counterData;
     }
 
+    view.get().onDataUpdated(state);
   }
 
   @Override
@@ -74,6 +76,8 @@ public class ClickListPresenter implements ClickListContract.Presenter {
   @Override
   public void onBackPressed() {
     // Log.e(TAG, "onBackPressed()");
+    ClickToCounterState clickToCounterState = new ClickToCounterState(state.counterData);
+    passStateToPreviousScreen(clickToCounterState);
   }
 
   @Override
@@ -88,8 +92,7 @@ public class ClickListPresenter implements ClickListContract.Presenter {
 
   @Override
   public void onClickButtonPressed() {
-    List<ClickData> newClicksCounter = model.addClicksCounter(state.datasource);
-    state.datasource = newClicksCounter;
+    state.datasource = model.addClicksCounter(state.datasource);
 
     view.get().onDataUpdated(state);
   }

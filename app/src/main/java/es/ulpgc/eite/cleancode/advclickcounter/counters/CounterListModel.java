@@ -21,13 +21,13 @@ public class CounterListModel implements CounterListContract.Model {
   }
 
   @Override
-  public void onRestartScreen(String data) {
-    // Log.e(TAG, "onRestartScreen()");
+  public void onDataFromNextScreen(List<CounterData> data) {
+
   }
 
   @Override
-  public void onDataFromNextScreen(String data) {
-    // Log.e(TAG, "onDataFromNextScreen()");
+  public void onRestartScreen(String data) {
+    // Log.e(TAG, "onRestartScreen()");
   }
 
   @Override

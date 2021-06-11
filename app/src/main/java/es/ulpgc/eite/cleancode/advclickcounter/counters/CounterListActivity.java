@@ -7,6 +7,8 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import es.ulpgc.eite.cleancode.advclickcounter.R;
 import es.ulpgc.eite.cleancode.advclickcounter.app.AppMediator;
 import es.ulpgc.eite.cleancode.advclickcounter.clicks.ClickListActivity;
@@ -32,7 +34,6 @@ public class CounterListActivity
 
     // do the setup
     CounterListScreen.configure(this);
-
     if (savedInstanceState == null) {
       presenter.onStart();
 
@@ -40,6 +41,7 @@ public class CounterListActivity
       presenter.onRestart();
     }
   }
+
 
   @Override
   protected void onResume() {

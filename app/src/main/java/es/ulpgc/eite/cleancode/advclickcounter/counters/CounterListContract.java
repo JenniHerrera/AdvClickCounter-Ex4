@@ -3,6 +3,7 @@ package es.ulpgc.eite.cleancode.advclickcounter.counters;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+import es.ulpgc.eite.cleancode.advclickcounter.data.ClickData;
 import es.ulpgc.eite.cleancode.advclickcounter.data.CounterData;
 
 public interface CounterListContract {
@@ -32,7 +33,7 @@ public interface CounterListContract {
   interface Model {
     String getStoredData();
 
-    void onDataFromNextScreen(String data);
+    void onDataFromNextScreen(List<CounterData>  data);
     void onRestartScreen(String data);
     void onDataFromPreviousScreen(String data);
     List<CounterData> addCounter(List<CounterData> datasource);

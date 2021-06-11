@@ -60,7 +60,7 @@ public class CounterListPresenter implements CounterListContract.Presenter {
     if (savedState != null) {
 
       // update the model if is necessary
-      model.onDataFromNextScreen(savedState.data);
+      //model.onDataFromNextScreen(savedState.data);
     }
 
     // call the model and update the state
@@ -88,16 +88,15 @@ public class CounterListPresenter implements CounterListContract.Presenter {
 
   @Override
   public void onCounterButtonPressed() {
-    //Counter nuevo
-    List<CounterData> newCounter = model.addCounter(state.datasource);
-    state.datasource = newCounter;
+    state.datasource = model.addCounter(state.datasource);
 
     view.get().onDataUpdated(state);
   }
 
   @Override
   public void onCounterItemSelected(CounterData counter) {
-    passStateToNextScreen(new CounterToClickState(counter));
+    CounterToClickState counterToClickState = new CounterToClickState(counter);
+    passStateToNextScreen(counterToClickState);
     view.get().navigateToNextScreen();
   }
 
