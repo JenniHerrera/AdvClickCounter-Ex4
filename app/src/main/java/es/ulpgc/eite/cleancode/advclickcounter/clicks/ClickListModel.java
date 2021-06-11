@@ -1,5 +1,9 @@
 package es.ulpgc.eite.cleancode.advclickcounter.clicks;
 
+import java.util.List;
+
+import es.ulpgc.eite.cleancode.advclickcounter.data.ClickData;
+
 public class ClickListModel implements ClickListContract.Model {
 
   public static String TAG = ClickListModel.class.getSimpleName();
@@ -27,7 +31,13 @@ public class ClickListModel implements ClickListContract.Model {
   }
 
   @Override
-  public void onDataFromPreviousScreen(String data) {
+  public void onDataFromPreviousScreen(List<ClickData>  data) {
     // Log.e(TAG, "onDataFromPreviousScreen()");
+  }
+
+  @Override
+  public List<ClickData> addClicksCounter(List<ClickData> datasource) {
+    datasource.add(new ClickData());
+    return datasource;
   }
 }

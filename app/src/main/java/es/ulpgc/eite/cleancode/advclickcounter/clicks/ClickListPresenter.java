@@ -1,10 +1,13 @@
 package es.ulpgc.eite.cleancode.advclickcounter.clicks;
 
+
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 import es.ulpgc.eite.cleancode.advclickcounter.app.AppMediator;
 import es.ulpgc.eite.cleancode.advclickcounter.app.ClickToCounterState;
 import es.ulpgc.eite.cleancode.advclickcounter.app.CounterToClickState;
+import es.ulpgc.eite.cleancode.advclickcounter.data.ClickData;
 
 public class ClickListPresenter implements ClickListContract.Presenter {
 
@@ -28,14 +31,14 @@ public class ClickListPresenter implements ClickListContract.Presenter {
     if (state == null) {
       state = new ClickListState();
     }
-
     // use passed state if is necessary
     CounterToClickState savedState = getStateFromPreviousScreen();
     if (savedState != null) {
-
       // update the model if is necessary
-      model.onDataFromPreviousScreen(savedState.data);
+      //model.onDataFromPreviousScreen(savedState.data);
+      state.datasource = savedState.counterData.clicks;
     }
+
   }
 
   @Override
@@ -85,7 +88,10 @@ public class ClickListPresenter implements ClickListContract.Presenter {
 
   @Override
   public void onClickButtonPressed() {
+    List<ClickData> newClicksCounter = model.addClicksCounter(state.datasource);
+    state.datasource = newClicksCounter;
 
+    view.get().onDataUpdated(state);
   }
 
   private void passStateToPreviousScreen(ClickToCounterState state) {
