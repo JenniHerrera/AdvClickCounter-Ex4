@@ -1,10 +1,12 @@
 package es.ulpgc.eite.cleancode.advclickcounter.counters;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 import es.ulpgc.eite.cleancode.advclickcounter.app.AppMediator;
 import es.ulpgc.eite.cleancode.advclickcounter.app.ClickToCounterState;
 import es.ulpgc.eite.cleancode.advclickcounter.app.CounterToClickState;
+import es.ulpgc.eite.cleancode.advclickcounter.data.CounterData;
 
 public class CounterListPresenter implements CounterListContract.Presenter {
 
@@ -86,7 +88,11 @@ public class CounterListPresenter implements CounterListContract.Presenter {
 
   @Override
   public void onCounterButtonPressed() {
+    //Counter nuevo
+    List<CounterData> newCounter = model.addCounter(state.datasource);
+    state.datasource = newCounter;
 
+    view.get().onDataUpdated(state);
   }
 
   private void passStateToNextScreen(CounterToClickState state) {
