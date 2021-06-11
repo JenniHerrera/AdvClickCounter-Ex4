@@ -3,6 +3,7 @@ package es.ulpgc.eite.cleancode.advclickcounter.clicks;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -73,7 +74,11 @@ public class ClickListActivity
           @Override
           public void onClick(View view) {
             ClickData data = (ClickData) view.getTag();
+            data.value++;
+            TextView value = view.findViewById(R.id.value);
+            value.setText(data.value.toString());
 
+            presenter.onClickItemPressed();
           }
         })
     );

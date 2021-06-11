@@ -94,6 +94,11 @@ public class ClickListPresenter implements ClickListContract.Presenter {
     view.get().onDataUpdated(state);
   }
 
+  @Override
+  public void onClickItemPressed() {
+    state.counterData.value++;
+  }
+
   private void passStateToPreviousScreen(ClickToCounterState state) {
     mediator.setPreviousClickScreenState(state);
   }

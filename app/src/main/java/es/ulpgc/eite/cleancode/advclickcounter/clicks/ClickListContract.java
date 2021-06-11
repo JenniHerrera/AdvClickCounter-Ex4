@@ -26,6 +26,7 @@ public interface ClickListContract {
     void onDestroy();
 
     void onClickButtonPressed();
+    void onClickItemPressed();
   }
 
   interface Model {
