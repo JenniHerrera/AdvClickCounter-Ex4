@@ -95,6 +95,12 @@ public class CounterListPresenter implements CounterListContract.Presenter {
     view.get().onDataUpdated(state);
   }
 
+  @Override
+  public void onCounterItemSelected(CounterData counter) {
+    passStateToNextScreen(new CounterToClickState(counter));
+    view.get().navigateToNextScreen();
+  }
+
   private void passStateToNextScreen(CounterToClickState state) {
     mediator.setNextCounterScreenState(state);
   }
